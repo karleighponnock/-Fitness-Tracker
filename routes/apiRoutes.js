@@ -3,6 +3,7 @@
 const app = require("express").Router();
 const Workout = require("../models/workout.js");
 
+
 // You will need at least Four (4) api routes:
 // GET ( "/api/workouts" ) - Get all workouts
 app.get("/api/workouts", (req, res) => {
@@ -36,7 +37,8 @@ app.post("/api/workouts", (req, res) => {
         });
 });
 // PUT ( "/api/workouts/:id" ) - Update a Workout
-app.put("api/workouts/:id", (req, res) => {
+app.put("/api/workouts/:id", (req, res) => {
+    console.log("Hello!!")
     Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body } })
         .then(dbWorkout => {
             res.json(dbWorkout);
